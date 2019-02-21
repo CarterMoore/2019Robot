@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.CommandBase;
@@ -18,6 +19,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
       CommandBase.init();
+      try {
+          CameraServer.getInstance().startAutomaticCapture();
+      } catch (Exception e) {
+          System.out.println("No camera connected");
+      }
   }
 
   @Override
