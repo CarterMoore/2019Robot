@@ -20,4 +20,12 @@ public class RobotMap {
 
     // Conveyor PWM port
     public static final int CONVEYOR_SPARK = 0;
+
+    // Hatch Mechanism solenoids
+    public static final int EXTENDER_SOLENOID_F = 0;
+    public static final int EXTENDER_SOLENOID_R = 0;
+
+    public static final int RELEASER_SOLENOID_F = 0;
+    public static final int RELEASER_SOLENOID_R = 0;
+
 }
