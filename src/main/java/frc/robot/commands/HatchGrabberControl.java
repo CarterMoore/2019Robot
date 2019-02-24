@@ -19,18 +19,18 @@ public class HatchGrabberControl extends CommandBase {
 
         // Toggle for extending the mechanism
         if (debouncer.get()) {
-            if (hatchGrabber.getExtender() == DoubleSolenoid.Value.kForward) {
-                hatchGrabber.setExtender(DoubleSolenoid.Value.kReverse);
+            if (hatchGrabber.getExtenderState() == DoubleSolenoid.Value.kForward) {
+                hatchGrabber.setExtenderState(DoubleSolenoid.Value.kReverse);
             } else {
-                hatchGrabber.setExtender(DoubleSolenoid.Value.kForward);
+                hatchGrabber.setExtenderState(DoubleSolenoid.Value.kForward);
             }
         }
 
         // Push to release hatch panel
         if (OI.getOperatorLB()) {
-            hatchGrabber.setHatchReleaser(DoubleSolenoid.Value.kForward);
+            hatchGrabber.setHatchReleaserState(DoubleSolenoid.Value.kForward);
         } else {
-            hatchGrabber.setHatchReleaser(DoubleSolenoid.Value.kReverse);
+            hatchGrabber.setHatchReleaserState(DoubleSolenoid.Value.kReverse);
         }
 
     }
