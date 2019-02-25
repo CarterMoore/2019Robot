@@ -8,7 +8,7 @@ import frc.robot.RobotMap;
 
 public class DriveTrain extends Subsystem {
 
-    private static WPI_TalonSRX leftTalon, rightTalon;
+    private WPI_TalonSRX leftTalon, rightTalon;
 
     private DifferentialDrive drive;
 
@@ -77,12 +77,17 @@ public class DriveTrain extends Subsystem {
         drive.tankDrive(lSpeed, rSpeed);
     }
 
-    public static WPI_TalonSRX getLeftTalon() {
+    public WPI_TalonSRX getLeftTalon() {
         return leftTalon;
     }
 
-    public static WPI_TalonSRX getRightTalon() {
+    public WPI_TalonSRX getRightTalon() {
         return rightTalon;
+    }
+
+    public void stop() {
+        leftTalon.stopMotor();
+        rightTalon.stopMotor();
     }
 
     @Override
