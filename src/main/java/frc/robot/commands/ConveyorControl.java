@@ -7,7 +7,7 @@ public class ConveyorControl extends CommandBase {
     @Override
     protected void execute() {
 
-        if (OI.getOperatorRightBumper()) {
+        if (OI.getOperatorRB()) {
             conveyor.runForward();
         } else {
             conveyor.stop();

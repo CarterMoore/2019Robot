@@ -22,7 +22,7 @@ public class VisionAlignment extends CommandBase {
     @Override
     protected void execute() {
 
-        if (OI.getDriverRightBumper()) {
+        if (OI.getDriverRB()) {
             pipeline.setEntry("camMode", 0);
             pipeline.setEntry("ledMode", 0);
 

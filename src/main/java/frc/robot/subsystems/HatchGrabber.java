@@ -22,15 +22,15 @@ public class HatchGrabber extends Subsystem {
         extender = new DoubleSolenoid(RobotMap.EXTENDER_SOLENOID_F, RobotMap.EXTENDER_SOLENOID_R);
     }
 
-    public void setExtender(DoubleSolenoid.Value state) {
+    public void setExtenderState(DoubleSolenoid.Value state) {
         extender.set(state);
     }
 
-    public void setHatchReleaser(DoubleSolenoid.Value state) {
+    public void setHatchReleaserState(DoubleSolenoid.Value state) {
         hatchReleaser.set(state);
     }
 
-    public DoubleSolenoid.Value getExtender() {
+    public DoubleSolenoid.Value getExtenderState() {
         return extender.get();
     }
 
