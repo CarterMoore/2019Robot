@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class DriveTrain extends Subsystem {
@@ -16,6 +17,8 @@ public class DriveTrain extends Subsystem {
 
     // TODO test and find PIDF constants
     private static final double NEUTRAL_DEADBAND = 0.01, kF = 0.0, kP = 0.0, kI = 0.0, kD = 0.0, PEAK_OUTPUT = 0.9;
+
+    private static final double PULSES_PER_ROTATION = 4096, WHEEL_DIAMETER = 0.5;
 
     private static final int I_ZONE = 0;
 
@@ -90,6 +93,10 @@ public class DriveTrain extends Subsystem {
         rightTalon.stopMotor();
     }
 
+    public void log() {
+        SmartDashboard.putNumber("Left Wheel speed", leftTalon.getSelectedSensorVelocity() * 10 * ((WHEEL_DIAMETER * Math.PI) / PULSES_PER_ROTATION));
+        SmartDashboard.putNumber("Right Wheel speed", rightTalon.getSelectedSensorVelocity() * 10 * ((WHEEL_DIAMETER * Math.PI) / PULSES_PER_ROTATION));
+    }
     @Override
     protected void initDefaultCommand() {
 

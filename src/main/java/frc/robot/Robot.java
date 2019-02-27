@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.*;
+import frc.robot.subsystems.DriveTrain;
 
 public class Robot extends TimedRobot {
 
@@ -58,6 +59,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+      DriveTrain.getInstance().log();
   }
 
   @Override
