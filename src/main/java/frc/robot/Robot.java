@@ -8,22 +8,28 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc.robot.commands.CommandBase;
-import frc.robot.commands.ConveyorControl;
-import frc.robot.commands.DriverControl;
+import frc.robot.commands.*;
 
 public class Robot extends TimedRobot {
+
+  private Compressor compressor;
 
   @Override
   public void robotInit() {
       CommandBase.init();
+      OI.init();
       try {
           CameraServer.getInstance().startAutomaticCapture();
       } catch (Exception e) {
           System.out.println("No camera connected");
       }
+
+      compressor = new Compressor();
+      compressor.start();
+
   }
 
   @Override
@@ -45,6 +51,8 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     new DriverControl().start();
     new ConveyorControl().start();
+    new HatchGrabberControl().start();
+    new VisionAlignment().start();
   }
 
   @Override
@@ -57,6 +65,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().removeAll();
     new DriverControl().start();
     new ConveyorControl().start();
+    new HatchGrabberControl().start();
+    new VisionAlignment().start();
   }
 
   @Override

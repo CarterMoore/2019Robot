@@ -13,8 +13,6 @@ public class CommandBase extends Command {
     static HatchGrabber hatchGrabber;
 
     public static void init() {
-        OI.init();
-
         driveTrain = DriveTrain.getInstance();
         conveyor = Conveyor.getInstance();
         hatchGrabber = HatchGrabber.getInstance();
