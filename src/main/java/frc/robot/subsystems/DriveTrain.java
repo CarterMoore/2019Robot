@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem {
     private DriveTrain() {
 
         leftTalon = new WPI_TalonSRX(RobotMap.LEFT_TALON);
-        rightTalon = new WPI_TalonSRX(RobotMap.RIHGT_TALON);
+        rightTalon = new WPI_TalonSRX(RobotMap.RIGHT_TALON);
 
         // Reset to defaults on boot to make sure settings are known
         leftTalon.configFactoryDefault();

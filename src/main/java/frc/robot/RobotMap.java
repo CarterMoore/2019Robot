@@ -16,7 +16,7 @@ package frc.robot;
 public class RobotMap {
 
     // Drivetrain CAN IDs
-    public static final int LEFT_TALON = 0, RIHGT_TALON = 0, LEFT_VICTOR = 0, RIGHT_VICTOR = 0;
+    public static final int LEFT_TALON = 5, RIGHT_TALON = 3, LEFT_VICTOR = 4, RIGHT_VICTOR = 6;
 
     // Conveyor PWM port
     public static final int CONVEYOR_SPARK = 0;
