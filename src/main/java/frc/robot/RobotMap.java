@@ -16,16 +16,23 @@ package frc.robot;
 public class RobotMap {
 
     // Drivetrain CAN IDs
-    public static final int LEFT_TALON = 0, RIHGT_TALON = 0, LEFT_VICTOR = 0, RIGHT_VICTOR = 0;
+    public static final int LEFT_TALON = 5, RIGHT_TALON = 3, LEFT_VICTOR = 4, RIGHT_VICTOR = 6;
 
     // Conveyor PWM port
     public static final int CONVEYOR_SPARK = 0;
 
     // Hatch Mechanism solenoids
-    public static final int EXTENDER_SOLENOID_F = 0;
-    public static final int EXTENDER_SOLENOID_R = 0;
+    public static final int EXTENDER_SOLENOID_F = 1;
+    public static final int EXTENDER_SOLENOID_R = 6;
 
-    public static final int RELEASER_SOLENOID_F = 0;
+    public static final int RELEASER_SOLENOID_F = 7;
     public static final int RELEASER_SOLENOID_R = 0;
+
+    public static final int ELEVATOR_TALON = 0;
+
+    public static final int INTAKE_SPARK = 1;
+
+    public static final int INTAKE_F = 0;
+    public static final int INTAKE_R = 0;
 
 }

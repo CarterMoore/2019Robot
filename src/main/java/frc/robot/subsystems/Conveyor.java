@@ -19,16 +19,16 @@ public class Conveyor {
         conveyorMotor = new Spark(RobotMap.CONVEYOR_SPARK);
     }
 
-    public void runForward() {
-        conveyorMotor.set(0.4);
+    public void runForward(double speed) {
+        conveyorMotor.set(-speed);
     }
 
     public void runBackward() {
-        conveyorMotor.set(-0.2);
+        conveyorMotor.set(0.6);
     }
 
     public void stop() {
-        conveyorMotor.stopMotor();
+        conveyorMotor.set(0);
     }
 
 }
