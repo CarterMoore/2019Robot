@@ -5,6 +5,7 @@ import frc.robot.OI;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.HatchGrabber;
+import frc.robot.subsystems.Intake;
 
 public class CommandBase extends Command {
 

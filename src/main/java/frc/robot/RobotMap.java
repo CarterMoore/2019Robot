@@ -22,10 +22,17 @@ public class RobotMap {
     public static final int CONVEYOR_SPARK = 0;
 
     // Hatch Mechanism solenoids
-    public static final int EXTENDER_SOLENOID_F = 0;
-    public static final int EXTENDER_SOLENOID_R = 0;
+    public static final int EXTENDER_SOLENOID_F = 1;
+    public static final int EXTENDER_SOLENOID_R = 6;
 
-    public static final int RELEASER_SOLENOID_F = 0;
+    public static final int RELEASER_SOLENOID_F = 7;
     public static final int RELEASER_SOLENOID_R = 0;
+
+    public static final int ELEVATOR_TALON = 0;
+
+    public static final int INTAKE_SPARK = 1;
+
+    public static final int INTAKE_F = 0;
+    public static final int INTAKE_R = 0;
 
 }

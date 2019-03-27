@@ -27,7 +27,7 @@ public class HatchGrabberControl extends CommandBase {
         }
 
         // Push to release hatch panel
-        if (OI.getOperatorLB()) {
+        if (OI.getOperatorBButton()) {
             hatchGrabber.setHatchReleaserState(DoubleSolenoid.Value.kForward);
         } else {
             hatchGrabber.setHatchReleaserState(DoubleSolenoid.Value.kReverse);

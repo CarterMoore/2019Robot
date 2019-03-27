@@ -6,12 +6,19 @@ public class ConveyorControl extends CommandBase {
 
     @Override
     protected void execute() {
-
+//        conveyor.runForward();
         if (OI.getOperatorRB()) {
-            conveyor.runForward();
+            conveyor.runForward(0.8);
+        } else if (OI.getOperatorLB()){
+            conveyor.runForward(0.6);
         } else {
             conveyor.stop();
         }
 
+    }
+
+    @Override
+    protected boolean isFinished() {
+        return false;
     }
 }

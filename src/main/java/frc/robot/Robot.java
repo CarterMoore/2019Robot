@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.*;
@@ -53,7 +54,7 @@ public class Robot extends TimedRobot {
     new DriverControl().start();
     new ConveyorControl().start();
     new HatchGrabberControl().start();
-    new VisionAlignment().start();
+//    new VisionAlignment().start();
   }
 
   @Override
@@ -68,7 +69,7 @@ public class Robot extends TimedRobot {
     new DriverControl().start();
     new ConveyorControl().start();
     new HatchGrabberControl().start();
-    new VisionAlignment().start();
+//    new VisionAlignment().start();
   }
 
   @Override
