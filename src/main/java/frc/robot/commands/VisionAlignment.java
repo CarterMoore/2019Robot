@@ -2,56 +2,57 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
-import frc.robot.Pipeline;
+import frc.robot.Limelight;
 
 public class VisionAlignment extends CommandBase {
+
+    private static final int DRIVER_PIPELINE = 0, PROCESSING_PIPELINE = 1;
 
     private static final double KP_TURN = 0.05;
 
     private static final double KP_DRIVE = 0.035;
 
-    private Pipeline pipeline;
+    private static final double MAX_TURN = 0.8, MAX_DRIVE = 0.7;
+
+    private Limelight limelight;
 
     private double tx, ty;
 
     @Override
     protected void initialize() {
-        pipeline = new Pipeline((byte)0);
+        limelight = new Limelight((byte)DRIVER_PIPELINE);
     }
 
     @Override
     protected void execute() {
 
         if (OI.getDriverRB()) {
-            pipeline.setEntry("camMode", 0);
-            pipeline.setEntry("ledMode", 0);
 
-            if (pipeline.getEntry("tv") == 1) {
-                tx = pipeline.getEntry("tx");
-                ty = pipeline.getEntry("ty");
+            limelight.setEntry("pipeline", PROCESSING_PIPELINE);
+
+            if (limelight.getEntry("tv") == 1) {
+                tx = limelight.getEntry("tx");
+                ty = limelight.getEntry("ty");
 
                 double steeringAdjust = 0;
                 double distanceAdjust = 0;
 
                 if (Math.abs(tx) > 1) {
-                    steeringAdjust = tx * KP_TURN;
+                    double sign = Math.abs(tx * KP_TURN) / (tx * KP_TURN);
+                    steeringAdjust = sign * Math.min(Math.abs(tx * KP_TURN), MAX_TURN);
                 }
 
                 if (Math.abs(ty) > 1) {
-                    distanceAdjust = ty * KP_DRIVE;
+                    distanceAdjust = Math.min(ty * KP_DRIVE, MAX_DRIVE);
                 }
 
-                driveTrain.tankDrive((distanceAdjust + steeringAdjust), (distanceAdjust - steeringAdjust));
+                driveTrain.arcadeDrive(distanceAdjust, steeringAdjust);
+
             }
 
-
         } else {
-            pipeline.setEntry("camMode", 1);
-            pipeline.setEntry("ledMode", 1);
+            limelight.setEntry("pipeline", DRIVER_PIPELINE);
         }
-
-        SmartDashboard.putNumber("Limelight X", tx);
-        SmartDashboard.putNumber("Limelight Y", ty);
 
     }
 }

@@ -3,11 +3,11 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
-public class Pipeline {
+public class Limelight {
 
     private NetworkTable table;
 
-    public Pipeline(byte pipeline) {
+    public Limelight(byte pipeline) {
         table = NetworkTableInstance.getDefault().getTable("limelight");
         setEntry("pipeline", pipeline);
     }
