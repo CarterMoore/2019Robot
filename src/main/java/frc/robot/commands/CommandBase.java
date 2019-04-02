@@ -12,11 +12,13 @@ public class CommandBase extends Command {
     static DriveTrain driveTrain;
     static Conveyor conveyor;
     static HatchGrabber hatchGrabber;
+    static Intake intake;
 
     public static void init() {
         driveTrain = DriveTrain.getInstance();
         conveyor = Conveyor.getInstance();
         hatchGrabber = HatchGrabber.getInstance();
+        intake = Intake.getInstance();
     }
 
     @Override
