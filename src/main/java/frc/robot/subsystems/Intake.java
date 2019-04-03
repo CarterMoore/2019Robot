@@ -3,13 +3,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Intake extends Subsystem {
 
-    private DoubleSolenoid intakeExtender;
-
     private Spark intakeMotor;
+
+    private DoubleSolenoid extender;
 
     private static Intake instance;
 
@@ -19,21 +20,17 @@ public class Intake extends Subsystem {
         return instance;
     }
 
-    private Intake() {
-        intakeExtender = new DoubleSolenoid(RobotMap.INTAKE_F, RobotMap.INTAKE_R);
+    public Intake() {
         intakeMotor = new Spark(RobotMap.INTAKE_SPARK);
+        extender = new DoubleSolenoid(RobotMap.EXTENDER_SOLENOID_F, RobotMap.RELEASER_SOLENOID_R);
     }
 
-    public void setIntakeExtenderState(DoubleSolenoid.Value state) {
-        intakeExtender.set(state);
-    }
-
-    public DoubleSolenoid.Value getIntakeExtenderState() {
-        return intakeExtender.get();
-    }
-
-    public void runIntake(double speed) {
+    public void run(double speed) {
         intakeMotor.set(speed);
+    }
+
+    public void setExtender(DoubleSolenoid.Value state) {
+        extender.set(state);
     }
 
     @Override
