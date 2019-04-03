@@ -69,6 +69,7 @@ public class Robot extends TimedRobot {
     new DriverControl().start();
     new ConveyorControl().start();
     new HatchGrabberControl().start();
+    new IntakeControl().start();
 //    new VisionAlignment().start();
   }
 

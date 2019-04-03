@@ -32,7 +32,7 @@ public class RobotMap {
 
     public static final int INTAKE_SPARK = 1;
 
-    public static final int INTAKE_F = 0;
-    public static final int INTAKE_R = 0;
+    public static final int INTAKE_F = 5;
+    public static final int INTAKE_R = 2;
 
 }
