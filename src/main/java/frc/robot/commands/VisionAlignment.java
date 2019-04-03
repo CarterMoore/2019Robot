@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Debouncer;
 import frc.robot.OI;
 import frc.robot.Limelight;
 
@@ -12,38 +13,59 @@ public class VisionAlignment extends CommandBase {
 
     private static final double KP_DRIVE = 0.035;
 
-    private static final double MAX_TURN = 0.8, MAX_DRIVE = 0.7;
+    private static final double MAX_DRIVE = 0.5;
+
+    private static final double MIN_TURN = 0.1;
+
+    private static final double TARGET_AREA = 0;
 
     private Limelight limelight;
 
-    private double tx, ty;
+    private Debouncer debouncer;
+
+    private int currentPipeline;
+
+    private double tx, ta;
 
     @Override
     protected void initialize() {
         limelight = new Limelight((byte)DRIVER_PIPELINE);
+        debouncer = new Debouncer(OI.getDriverController(), OI.LB);
+        currentPipeline = DRIVER_PIPELINE;
     }
 
     @Override
     protected void execute() {
 
+        if (debouncer.get()) {
+            if (currentPipeline == DRIVER_PIPELINE) {
+                limelight.setEntry("pipeline", PROCESSING_PIPELINE);
+                currentPipeline = PROCESSING_PIPELINE;
+            } else {
+                limelight.setEntry("pipeline", DRIVER_PIPELINE);
+                currentPipeline = DRIVER_PIPELINE;
+            }
+        }
+
         if (OI.getDriverRB()) {
 
             limelight.setEntry("pipeline", PROCESSING_PIPELINE);
+            currentPipeline = PROCESSING_PIPELINE;
 
             if (limelight.getEntry("tv") == 1) {
                 tx = limelight.getEntry("tx");
-                ty = limelight.getEntry("ty");
+                ta = limelight.getEntry("ta");
 
                 double steeringAdjust = 0;
-                double distanceAdjust = 0;
 
-                if (Math.abs(tx) > 1) {
-                    double sign = Math.abs(tx * KP_TURN) / (tx * KP_TURN);
-                    steeringAdjust = sign * Math.min(Math.abs(tx * KP_TURN), MAX_TURN);
+                double distanceAdjust = Math.min((TARGET_AREA - ta) * KP_DRIVE, MAX_DRIVE);
+
+                if (tx > 1) {
+                    steeringAdjust = tx * KP_TURN + MIN_TURN;
                 }
 
-                if (Math.abs(ty) > 1) {
-                    distanceAdjust = Math.min(ty * KP_DRIVE, MAX_DRIVE);
+                if (tx < -1) {
+                    steeringAdjust = tx * KP_TURN - MIN_TURN;
                 }
 
                 driveTrain.arcadeDrive(distanceAdjust, steeringAdjust);
@@ -52,6 +74,7 @@ public class VisionAlignment extends CommandBase {
 
         } else {
             limelight.setEntry("pipeline", DRIVER_PIPELINE);
+            currentPipeline = DRIVER_PIPELINE;
         }
 
     }
