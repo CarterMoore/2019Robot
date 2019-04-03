@@ -11,7 +11,9 @@ public class IntakeControl extends CommandBase {
     @Override
     protected void execute() {
         if (OI.getOperatorRB() && intake.getIntakeExtenderState() == DoubleSolenoid.Value.kForward) {
-            intake.runIntake(0.4);
+            intake.runIntake(0.7);
+        } else {
+            intake.runIntake(0);
         }
 
         if (debouncer.get()) {
