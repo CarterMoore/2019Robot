@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.Debouncer;
+
 import frc.robot.OI;
 
 public class IntakeControl extends CommandBase {
@@ -11,7 +12,7 @@ public class IntakeControl extends CommandBase {
     @Override
     protected void execute() {
         if (OI.getOperatorRB() && intake.getIntakeExtenderState() == DoubleSolenoid.Value.kForward) {
-            intake.runIntake(0.7);
+            intake.runIntake(0.9);
         } else {
             intake.runIntake(0);
         }

@@ -6,7 +6,6 @@ public class ConveyorControl extends CommandBase {
 
     @Override
     protected void execute() {
-//        conveyor.runForward();
         if (OI.getOperatorRB()) {
             conveyor.runForward(0.8);
         } else if (OI.getOperatorLB()){
