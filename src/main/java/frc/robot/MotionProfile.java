@@ -14,8 +14,8 @@ public class MotionProfile {
 
     public MotionProfile(String name) {
 
-        String leftFile = "PathWeaver/output/" + name + ".left.pf1.csv";
-        String rightFile = "PathWeaver/output/" + name + ".right.pf1.csv";
+        String leftFile = "C:\\Users\\Carter\\IdeaProjects\\2019Robot\\Paths\\output\\" + name + ".left.pf1.csv";
+        String rightFile = "C:\\Users\\Carter\\IdeaProjects\\2019Robot\\Paths\\output\\" + name + ".right.pf1.csv";
 
         leftPath = getValues(leftFile, false);
         rightPath = getValues(rightFile, false);
