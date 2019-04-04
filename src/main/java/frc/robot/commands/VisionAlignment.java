@@ -9,9 +9,9 @@ public class VisionAlignment extends CommandBase {
 
     private static final int DRIVER_PIPELINE = 0, PROCESSING_PIPELINE = 1;
 
-    private static final double KP_TURN = 0.05;
+    private static final double KP_TURN = 0.03;
 
-    private static final double KP_DRIVE = 0.035;
+    private static final double KP_DRIVE = 0.1;
 
     private static final double MAX_DRIVE = 0.5;
 
@@ -25,8 +25,6 @@ public class VisionAlignment extends CommandBase {
 
     private int currentPipeline;
 
-    private double tx, ta;
-
     @Override
     protected void initialize() {
         limelight = new Limelight((byte)DRIVER_PIPELINE);
@@ -37,15 +35,15 @@ public class VisionAlignment extends CommandBase {
     @Override
     protected void execute() {
 
-        if (debouncer.get()) {
-            if (currentPipeline == DRIVER_PIPELINE) {
-                limelight.setEntry("pipeline", PROCESSING_PIPELINE);
-                currentPipeline = PROCESSING_PIPELINE;
-            } else {
-                limelight.setEntry("pipeline", DRIVER_PIPELINE);
-                currentPipeline = DRIVER_PIPELINE;
-            }
-        }
+//        if (debouncer.get()) {
+//            if (currentPipeline == DRIVER_PIPELINE) {
+//                limelight.setEntry("pipeline", PROCESSING_PIPELINE);
+//                currentPipeline = PROCESSING_PIPELINE;
+//            } else {
+//                limelight.setEntry("pipeline", DRIVER_PIPELINE);
+//                currentPipeline = DRIVER_PIPELINE;
+//            }
+//        }
 
         if (OI.getDriverRB()) {
 
@@ -53,12 +51,18 @@ public class VisionAlignment extends CommandBase {
             currentPipeline = PROCESSING_PIPELINE;
 
             if (limelight.getEntry("tv") == 1) {
-                tx = limelight.getEntry("tx");
-                ta = limelight.getEntry("ta");
+                double tx = limelight.getEntry("tx");
+                double ta = limelight.getEntry("ta");
 
                 double steeringAdjust = 0;
 
-                double distanceAdjust = Math.min((TARGET_AREA - ta) * KP_DRIVE, MAX_DRIVE);
+                double distanceAdjust = (TARGET_AREA - ta) * KP_DRIVE;
+
+                if (distanceAdjust > MAX_DRIVE) {
+                    distanceAdjust = MAX_DRIVE;
+                } else if (distanceAdjust < -MAX_DRIVE) {
+                    distanceAdjust = -MAX_DRIVE;
+                }
 
                 if (tx > 1) {
                     steeringAdjust = tx * KP_TURN + MIN_TURN;
