@@ -81,7 +81,7 @@ public class RunMotionProfile extends CommandBase {
             double pos = profile[i][1]; // Feet
             double vel = profile[i][2]; // Feet / s
 
-            point.timeDur = (int) (profile[i][0] * 1000);
+            point.timeDur = (int) (profile[i][0] * 1000); // Convert seconds to ms
             point.position = pos * (PULSES_PER_ROTATION / (WHEEL_DIAMETER * Math.PI)); // Convert feet to units
             point.velocity = vel * (PULSES_PER_ROTATION / (WHEEL_DIAMETER * Math.PI)) / 10; // Convert ft/s to units/100ms
 

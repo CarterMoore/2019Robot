@@ -18,8 +18,8 @@ public class MotionProfile {
 
     public MotionProfile(String name) {
 
-        String leftFile = "./src/main/deploy/output/" + name + ".left.pf1.csv";
-        String rightFile = "./src/main/deploy/output/" + name + ".right.pf1.csv";
+        String leftFile = "/home/lvuser/deploy/paths" + name + ".left.pf1.csv";
+        String rightFile = "/home/lvuser/deploy/paths" + name + ".right.pf1.csv";
 
         leftPath = getValues(leftFile, false);
         rightPath = getValues(rightFile, false);
