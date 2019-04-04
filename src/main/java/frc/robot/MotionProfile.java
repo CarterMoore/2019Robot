@@ -1,8 +1,12 @@
 package frc.robot;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // dt,x,y,position,velocity,acceleration,jerk,heading
@@ -14,8 +18,8 @@ public class MotionProfile {
 
     public MotionProfile(String name) {
 
-        String leftFile = "C:\\Users\\Carter\\IdeaProjects\\2019Robot\\Paths\\output\\" + name + ".left.pf1.csv";
-        String rightFile = "C:\\Users\\Carter\\IdeaProjects\\2019Robot\\Paths\\output\\" + name + ".right.pf1.csv";
+        String leftFile = "./src/main/deploy/output/" + name + ".left.pf1.csv";
+        String rightFile = "./src/main/deploy/output/" + name + ".right.pf1.csv";
 
         leftPath = getValues(leftFile, false);
         rightPath = getValues(rightFile, false);
