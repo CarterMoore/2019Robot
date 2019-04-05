@@ -1,6 +1,5 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Debouncer;
 import frc.robot.OI;
 import frc.robot.Limelight;
@@ -35,15 +34,15 @@ public class VisionAlignment extends CommandBase {
     @Override
     protected void execute() {
 
-//        if (debouncer.get()) {
-//            if (currentPipeline == DRIVER_PIPELINE) {
-//                limelight.setEntry("pipeline", PROCESSING_PIPELINE);
-//                currentPipeline = PROCESSING_PIPELINE;
-//            } else {
-//                limelight.setEntry("pipeline", DRIVER_PIPELINE);
-//                currentPipeline = DRIVER_PIPELINE;
-//            }
-//        }
+        if (debouncer.get()) {
+            if (currentPipeline == DRIVER_PIPELINE) {
+                limelight.setEntry("pipeline", PROCESSING_PIPELINE);
+                currentPipeline = PROCESSING_PIPELINE;
+            } else {
+                limelight.setEntry("pipeline", DRIVER_PIPELINE);
+                currentPipeline = DRIVER_PIPELINE;
+            }
+        }
 
         if (OI.getDriverRB()) {
 
@@ -77,8 +76,8 @@ public class VisionAlignment extends CommandBase {
             }
 
         } else {
-            limelight.setEntry("pipeline", DRIVER_PIPELINE);
-            currentPipeline = DRIVER_PIPELINE;
+//            limelight.setEntry("pipeline", DRIVER_PIPELINE);
+//            currentPipeline = DRIVER_PIPELINE;
         }
 
     }

@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
     new DriverControl().start();
     new ConveyorControl().start();
     new HatchGrabberControl().start();
-//    new VisionAlignment().start();
+    new VisionAlignment().start();
   }
 
   @Override
@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
     new ConveyorControl().start();
     new HatchGrabberControl().start();
     new IntakeControl().start();
-//    new VisionAlignment().start();
+    new VisionAlignment().start();
   }
 
   @Override

@@ -35,4 +35,7 @@ public class RobotMap {
     public static final int INTAKE_F = 5;
     public static final int INTAKE_R = 2;
 
+    public static final int LIFT_F = 4;
+    public static final int LIFT_R = 3;
+
 }
