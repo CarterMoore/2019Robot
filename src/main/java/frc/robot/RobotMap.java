@@ -28,11 +28,16 @@ public class RobotMap {
     public static final int RELEASER_SOLENOID_F = 7;
     public static final int RELEASER_SOLENOID_R = 0;
 
-    public static final int ELEVATOR_TALON = 0;
+    public static final int ELEVATOR_TALON = 2;
 
     public static final int INTAKE_SPARK = 1;
 
     public static final int INTAKE_F = 5;
     public static final int INTAKE_R = 2;
+
+    public static final int LIFT_F = 3;
+    public static final int LIFT_R = 4;
+
+    public static final int BLINKIN = 2;
 
 }

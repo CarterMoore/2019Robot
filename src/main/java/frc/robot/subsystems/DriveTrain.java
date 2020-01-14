@@ -16,7 +16,7 @@ public class DriveTrain extends Subsystem {
     private static DriveTrain instance;
 
     // TODO test and find PIDF constants
-    private static final double NEUTRAL_DEADBAND = 0.01, kF = 0.0, kP = 0.0, kI = 0.0, kD = 0.0, PEAK_OUTPUT = 0.9;
+    private static final double NEUTRAL_DEADBAND = 0.01, kF = 1023 / 3400.0, kP = 0.0, kI = 0.0, kD = 0.0, PEAK_OUTPUT = 1.0;
 
     private static final double PULSES_PER_ROTATION = 4096, WHEEL_DIAMETER = 0.5;
 

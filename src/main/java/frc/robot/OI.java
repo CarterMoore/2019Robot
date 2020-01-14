@@ -59,6 +59,10 @@ public class OI {
 
     public static boolean getOperatorLB() {return operatorController.getRawButton(LB);}
 
+    public static boolean getDriverStart() {return driverController.getRawButton(START);}
+
+    public static boolean getDriverSelect() {return driverController.getRawButton(SELECT);}
+
     public static Joystick getDriverController() {return driverController;}
 
     public static Joystick getOperatorController() {return operatorController;}

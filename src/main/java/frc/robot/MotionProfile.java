@@ -1,8 +1,14 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Filesystem;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // dt,x,y,position,velocity,acceleration,jerk,heading
@@ -14,8 +20,8 @@ public class MotionProfile {
 
     public MotionProfile(String name) {
 
-        String leftFile = "PathWeaver/output/" + name + ".left.pf1.csv";
-        String rightFile = "PathWeaver/output/" + name + ".right.pf1.csv";
+        String leftFile = Filesystem.getDeployDirectory() + "/paths" + name + ".left.pf1.csv";
+        String rightFile = Filesystem.getDeployDirectory() + "/paths" + name + ".right.pf1.csv";
 
         leftPath = getValues(leftFile, false);
         rightPath = getValues(rightFile, false);
