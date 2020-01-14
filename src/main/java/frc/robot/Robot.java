@@ -29,8 +29,8 @@ public class Robot extends TimedRobot {
           System.out.println("No camera connected");
       }
 
-      compressor = new Compressor();
-      compressor.start();
+//      compressor = new Compressor();
+//      compressor.start();
 
   }
 
@@ -71,14 +71,17 @@ public class Robot extends TimedRobot {
     new HatchGrabberControl().start();
     new IntakeControl().start();
     new VisionAlignment().start();
+    new LiftControl().start();
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    DriveTrain.getInstance().log();
   }
 
   @Override
   public void testPeriodic() {
   }
+
 }

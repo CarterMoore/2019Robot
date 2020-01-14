@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Filesystem;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -18,8 +20,8 @@ public class MotionProfile {
 
     public MotionProfile(String name) {
 
-        String leftFile = "/home/lvuser/deploy/paths" + name + ".left.pf1.csv";
-        String rightFile = "/home/lvuser/deploy/paths" + name + ".right.pf1.csv";
+        String leftFile = Filesystem.getDeployDirectory() + "/paths" + name + ".left.pf1.csv";
+        String rightFile = Filesystem.getDeployDirectory() + "/paths" + name + ".right.pf1.csv";
 
         leftPath = getValues(leftFile, false);
         rightPath = getValues(rightFile, false);

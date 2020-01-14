@@ -7,7 +7,7 @@ public class Limelight {
 
     private NetworkTable table;
 
-    public Limelight(byte pipeline) {
+    public Limelight(int pipeline) {
         table = NetworkTableInstance.getDefault().getTable("limelight");
         setEntry("pipeline", pipeline);
     }
